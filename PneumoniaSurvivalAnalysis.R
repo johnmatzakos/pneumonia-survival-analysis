@@ -2,7 +2,7 @@
 
 #Author: Ioannis Matzakos Chorianopoulos
 
-#install.packages("KMsurv")
+install.packages("KMsurv")
 require(survival)
 require(KMsurv)
 data(pneumon)
