@@ -53,38 +53,30 @@ summary(coxph(Surv(chldage, status) ~ nsibs, data=pneumon))
 alpha = 0.05/2/6
 alpha
 
-#0-1
 summary(coxph(Surv(chldage, status) ~ as.factor(nsibs),data=pneumon[pneumon$nsibs<2,]))
 survdiff(Surv(chldage, status) ~ as.factor(nsibs), rho = 0, data=pneumon[pneumon$nsibs<2,])
 p01=5.55e-05
 p01
 
-#1-2
 survdiff(Surv(chldage, status) ~ as.factor(nsibs), rho = 0, data=pneumon[(pneumon$nsibs==1|pneumon$nsibs==2),])
 p12=0.0826
 p12
 
-#1-3
 survdiff(Surv(chldage, status) ~ as.factor(nsibs), rho = 0, data=pneumon[(pneumon$nsibs==1|pneumon$nsibs==3),])
 p13=0.376
 p13
 
-#2-3
 survdiff(Surv(chldage, status) ~ as.factor(nsibs), rho = 0, data=pneumon[(pneumon$nsibs==2|pneumon$nsibs==3),])
 p23=0.842
 p23
 
-#0-2
 survdiff(Surv(chldage, status) ~ as.factor(nsibs), rho = 0, data=pneumon[(pneumon$nsibs==0|pneumon$nsibs==2),])
 p02=2.83e-06
 p02
 
-#0-3
 survdiff(Surv(chldage, status) ~ as.factor(nsibs), rho = 0, data=pneumon[(pneumon$nsibs==0|pneumon$nsibs==3),])
 p03=p= 0.00662
 p03
-
-
 
 sig = (p01>alpha) # FALSE
 sig
@@ -314,6 +306,4 @@ cox.zph(model23)
 
 par(mfrow=c(2,4))
 plot(cox.zph(model23), col=c(2,4))
-
 contrasts(factor(pneumon$nsibs))
-
